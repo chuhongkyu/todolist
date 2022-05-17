@@ -8,8 +8,8 @@ declare module 'styled-components' {
     textColor: string;
     cloudColor: string;
     accentColor: string;
-    borderColor: string;
-    contentColor: string;
+    whiteColor: string;
+    inputStyle: string;
     clickedStyle: string;
     boxShadow: string;
     }
