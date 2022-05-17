@@ -4,16 +4,20 @@ import { Categories, IToDo, toDoState, customCategoriesState } from "./atoms";
 import styled from "styled-components";
 
 const ToDoList = styled.li`
+    width: 100%;
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-decoration: underline;
     span{
         margin-right: 10px;
+        text-decoration: underline;
     }
     div{
-
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
     
 `
@@ -30,6 +34,14 @@ const ToDoBtn = styled.button`
     }
 `
 
+const DeleteBtn = styled(ToDoBtn)`
+  color: ${prop =>prop.theme.whiteColor};
+  background-color: black;
+    &:hover{
+        background-color: ${prop =>prop.theme.whiteColor};
+    }
+`;
+
 function ToDo({text, category, id}:IToDo){
     const setToDos = useSetRecoilState(toDoState)
     const customCategories = useRecoilValue(customCategoriesState);
@@ -40,7 +52,6 @@ function ToDo({text, category, id}:IToDo){
 
         setToDos((oldToDos) => {
             const targetIndex = oldToDos.findIndex(toDo => toDo.id === id)
-            // const oldToDo = oldToDos[targetIndex];
             const newToDo = {text, id, category: name as any};
             return [...oldToDos.slice(0, targetIndex),
                     newToDo,
@@ -83,7 +94,7 @@ function ToDo({text, category, id}:IToDo){
                     );
                 }
                 })}
-                <ToDoBtn key={id} onClick={onDelete}>Delete</ToDoBtn>
+                <DeleteBtn key={id} onClick={onDelete}>🗑️</DeleteBtn>
             </div>
         </ToDoList>
     )

@@ -80,9 +80,9 @@ function CreateCategory() {
       <div>
         <input
           {...register('customCategory', {
-            required: 'How about Custom?',
+            required: 'The name cannot exceed 8 letters',
             minLength: 1,
-            maxLength: 5,
+            maxLength: 8,
           })}
           placeholder="Make Your Category"
           type="text"

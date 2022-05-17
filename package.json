@@ -1,5 +1,5 @@
 {
-  "name": "ToDoList",
+  "name": "todolist",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -55,5 +55,6 @@
   "devDependencies": {
     "@types/react-helmet": "^6.1.5",
     "@types/styled-components": "^5.1.25"
-  }
+  },
+  "homepage": "http://chuhongkyu.github.io/todolist"
 }

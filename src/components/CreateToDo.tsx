@@ -62,6 +62,8 @@ function CreateToDo(){
             <div>
                 <input {...register("toDo", {
                         required: "Please write a to do",
+                        minLength: 1,
+                        maxLength: 20,
                 })} placeholder="Write a to do"/>
                 <ToDoBtn>add</ToDoBtn>
             </div>
