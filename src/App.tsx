@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createGlobalStyle} from 'styled-components';
 import ToDoList from './components/ToDoList';
 
@@ -25,7 +26,11 @@ function App() {
   return (
     <>
       <GlobalStyle/>
-      <ToDoList/>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Routes>
+          <Route path="/" element={ <ToDoList/>}/>
+        </Routes>
+      </BrowserRouter>
     </>  
   );
 }
