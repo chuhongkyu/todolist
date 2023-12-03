@@ -22,6 +22,6 @@ describe('ListContainer show', ()=>{
             </>
         );
 
-        expect(container).toHaveTextContent("할일")
+        expect(container).toHaveTextContent("TO_DO")
     })
 })

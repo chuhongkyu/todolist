@@ -1,9 +1,9 @@
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { categoryState, toDoState } from "../utils/atom";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 
 const CreateList = () => {
-    const setToDos = useSetRecoilState(toDoState);
+    const [toDos, setToDos] = useRecoilState(toDoState);
     const category = useRecoilValue(categoryState);
     const [value, setValue] = useState<string>("");
   
@@ -17,12 +17,20 @@ const CreateList = () => {
       if (value.trim() === "") return;
   
       setToDos((oldToDos) => [
-        { text: value, id: Date.now().toString(), category },
+        { 
+          id: Date.now().toString(),
+          text: value, 
+          category 
+        },
         ...oldToDos,
       ]);
   
       setValue("");
     };
+
+    useEffect(() => {
+      localStorage.setItem("toDos", JSON.stringify(toDos));
+    }, [toDos]);
   
     return (
       <form onSubmit={handleValid}>
