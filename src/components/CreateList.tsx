@@ -20,6 +20,7 @@ const CreateList = () => {
         { 
           id: Date.now().toString(),
           text: value, 
+          check: false,
           category 
         },
         ...oldToDos,
@@ -34,15 +35,16 @@ const CreateList = () => {
   
     return (
       <form onSubmit={handleValid}>
-        <div>
+        <div className="py-2">
           <input
+            className="p-1"
             onChange={onChange}
             minLength={1}
             maxLength={20}
             placeholder="할일 목록을 작성해주세요."
             value={value}
           />
-          <button type="submit">제출</button>
+          <button type="submit">등록</button>
         </div>
       </form>
     );

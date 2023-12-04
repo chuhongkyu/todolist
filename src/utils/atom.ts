@@ -7,6 +7,7 @@ export enum Categories {
 export interface IToDo{
     id: string;
     text: string;
+    check: boolean;
     category: Categories;
 }
 

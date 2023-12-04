@@ -7,11 +7,11 @@ const ListContainer = () => {
     
     return(
         <section>
-            <h5 className="text-xl">할일 리스트</h5>
+            <h5 className="text-xl py-2">할일 리스트</h5>
             <ul>
                 {toDos.map((toDo)=>{
                     return(
-                        <List key={toDo.id + "KEY"} id={toDo.id} text={toDo.text} category={toDo.category}/>
+                        <List key={toDo.id + "KEY"} id={toDo.id} text={toDo.text} check={toDo.check} category={toDo.category}/>
                     )
                 })}
             </ul>

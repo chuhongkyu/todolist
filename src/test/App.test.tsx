@@ -8,6 +8,6 @@ test('renders learn react link', () => {
       <App />
     </RecoilRoot>
     );
-  const linkElement = screen.getByText('To Do 리스트');
+  const linkElement = screen.getByText('To Do App');
   expect(linkElement).toBeInTheDocument();
 });
