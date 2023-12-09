@@ -33,7 +33,10 @@ describe('change Input', ()=> {
         }
       });
    
+      expect(input).toHaveAttribute('value', 'TDD 연습하기');
+
       fireEvent.click(button);
+      
       await waitFor(() => {
         expect(input).toHaveAttribute('value', '');
       });

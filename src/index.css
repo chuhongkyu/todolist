@@ -39,6 +39,10 @@ input[type="checkbox"].check-box:checked {
     background-color: limegreen;
 }
 
+.list{
+    justify-content: space-between;
+}
+
 .list-category{
     border-radius: 50%;
     border: 1px solid #333;
