@@ -23,6 +23,7 @@ const List = (props:IToDo) => {
                 type="checkbox"
                 checked={check}
                 onChange={() => onChange()}
+                data-testid={`check-${id}`}
             />
             <label htmlFor={id} className={check ? 'active': ''}><p>{text}</p></label>
           </span>

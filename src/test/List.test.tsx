@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, getByLabelText, render } from '@testing-library/react';
 import List from '../components/List';
 import { Categories } from '../utils/atom';
 
@@ -12,7 +12,7 @@ describe('List show', ()=>{
                 category:  Categories.TO_DO
             }
         ]
-        const { container } = render(
+        const { container, getByTestId } = render(
             <>
                 {mocks.map((mock)=>{
                     return(
@@ -22,6 +22,11 @@ describe('List show', ()=>{
                 }
             </>
         );
-                
+
+        const checkbox = getByTestId('check-001');
+        fireEvent.change(checkbox, { target: { checked: true } });
+
+        // const deleteBtn = getByTestId("001");
+        // expect(deleteBtn).toBeInTheDocument();        
     })
 })
