@@ -54,3 +54,17 @@ input[type="checkbox"].check-box:checked {
 .list-category p{
     display: none;
 }
+
+form.form #dropdown{
+    display: none;
+    position: absolute;
+}
+
+form.form.active #dropdown{
+    display: block;
+}
+
+.btn-group{
+    display: flex;
+    align-items: center;
+}

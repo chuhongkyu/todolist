@@ -12,7 +12,7 @@ describe('List show', ()=>{
                 category:  Categories.TO_DO
             }
         ]
-        const { container, getByTestId } = render(
+        const { getByTestId } = render(
             <>
                 {mocks.map((mock)=>{
                     return(
@@ -25,8 +25,5 @@ describe('List show', ()=>{
 
         const checkbox = getByTestId('check-001');
         fireEvent.change(checkbox, { target: { checked: true } });
-
-        // const deleteBtn = getByTestId("001");
-        // expect(deleteBtn).toBeInTheDocument();        
     })
 })

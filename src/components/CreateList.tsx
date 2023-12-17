@@ -1,11 +1,13 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { categoryState, toDoState } from "../utils/atom";
-import { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect, useRef } from "react";
+import CategoryDropBox from "./CategoryDropBox";
 
 const CreateList = () => {
     const [toDos, setToDos] = useRecoilState(toDoState);
     const category = useRecoilValue(categoryState);
     const [value, setValue] = useState<string>("");
+    const formRef = useRef<HTMLFormElement | null>(null);
   
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
       const text = e.target.value;
@@ -32,18 +34,26 @@ const CreateList = () => {
     useEffect(() => {
       localStorage.setItem("toDos", JSON.stringify(toDos));
     }, [toDos]);
+
+    const onClickDropBox = ()=>{
+      const currentForm = formRef.current;
+      if (currentForm) {
+        currentForm.classList.toggle('active')
+      }
+    }
   
     return (
-      <form onSubmit={handleValid}>
+      <form ref={formRef} className="form" onSubmit={handleValid}>
         <div className="flex py-2">
           <button 
             id="dropdown-button" 
             data-dropdown-toggle="dropdown" 
+            onClick={onClickDropBox}
             className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
-            {/* <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-            </svg> */}
-            분류
+            </svg>
+            
           </button>
           <div className="relative w-full">
               <input 
@@ -65,6 +75,7 @@ const CreateList = () => {
             </button>
           </div>
         </div>
+        <CategoryDropBox/>
       </form>
     );
   };
