@@ -1,11 +1,11 @@
 import { useRecoilState, useRecoilValue } from "recoil";
-import { categoryState, toDoState } from "../utils/atom";
+import { Categories, categoryState, currentInputState, toDoState } from "../utils/atom";
 import { useState, ChangeEvent, FormEvent, useEffect, useRef } from "react";
 import CategoryDropBox from "./CategoryDropBox";
 
 const CreateList = () => {
     const [toDos, setToDos] = useRecoilState(toDoState);
-    const category = useRecoilValue(categoryState);
+    const category = useRecoilValue(currentInputState);
     const [value, setValue] = useState<string>("");
     const formRef = useRef<HTMLFormElement | null>(null);
   
@@ -53,7 +53,10 @@ const CreateList = () => {
             <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
             </svg>
-            
+            {category == Categories.TO_DO && <span className="px-4">😀 할일</span>}
+            {category == Categories.PET && <span className="px-4">🐶 반려 동물</span>}
+            {category == Categories.ACTIVITY && <span className="px-4">⚽️ 활동/여가</span>}
+            {category == Categories.STUDY && <span className="px-4">📖 도서/공부</span>}
           </button>
           <div className="relative w-full">
               <input 
