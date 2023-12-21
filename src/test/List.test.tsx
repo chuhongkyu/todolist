@@ -1,6 +1,7 @@
-import { fireEvent, getByLabelText, render } from '@testing-library/react';
+import { fireEvent, getByLabelText, render, screen } from '@testing-library/react';
 import List from '../components/List';
 import { Categories } from '../utils/atom';
+import { RecoilRoot } from 'recoil';
 
 describe('List show', ()=>{
     it('List', ()=> {
@@ -12,18 +13,18 @@ describe('List show', ()=>{
                 category:  Categories.TO_DO
             }
         ]
-        const { getByTestId } = render(
-            <>
+        render(
+            <RecoilRoot>
                 {mocks.map((mock)=>{
                     return(
                         <List key={mock.id + "KEY"} id={mock.id} text={mock.text} check={mock.check} category={mock.category}/>
                     )
                 })
                 }
-            </>
+            </RecoilRoot>
         );
 
-        const checkbox = getByTestId('check-001');
+        const checkbox = screen.getByTestId('check-001');
         fireEvent.change(checkbox, { target: { checked: true } });
     })
 })

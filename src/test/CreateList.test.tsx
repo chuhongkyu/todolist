@@ -1,15 +1,15 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import CreateList from "../components/CreateList";
 import { RecoilRoot } from "recoil";
 
 describe('change Input', ()=> {
     it('changes input', () => {
-        const { getByPlaceholderText } = render(
+        render(
             <RecoilRoot>
                 <CreateList />
             </RecoilRoot>
         );
-        const input = getByPlaceholderText('할일 목록을 작성해주세요.');
+        const input = screen.getByPlaceholderText('할일 목록을 작성해주세요.');
         fireEvent.change(input, {
           target: {
             value: '패스트 캠퍼스 강의 만들기'
@@ -19,13 +19,13 @@ describe('change Input', ()=> {
     });
 
     it('calls submit clears input', async() => {
-      const { getByText, getByPlaceholderText } = render(
+      render(
         <RecoilRoot>
           <CreateList />
         </RecoilRoot>
       );
-      const input = getByPlaceholderText('할일 목록을 작성해주세요.');
-      const button = getByText('등록');
+      const input = screen.getByPlaceholderText('할일 목록을 작성해주세요.');
+      const button = screen.getByText('등록');
 
       fireEvent.change(input, {
         target: {

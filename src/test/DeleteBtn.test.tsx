@@ -1,14 +1,15 @@
 import { RecoilRoot } from "recoil";
 import DeleteBtn from "../components/DeleteBtn";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe('check delete', ()=>{
     it('changes input', () => {
-        const { container } = render(
+        render(
             <RecoilRoot>
                 <DeleteBtn id={'001'} />
             </RecoilRoot>
         );
-        expect(container).toHaveTextContent('Delete');
+        const deleteBtnElement = screen.getByText('Delete');
+        expect(deleteBtnElement).toBeInTheDocument();
     });
 })
