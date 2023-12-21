@@ -1,9 +1,9 @@
 import { useRecoilValue } from "recoil";
-import { toDoSelector } from "../utils/atom";
+import { toDoState } from "../utils/atom";
 import List from "./List";
 
 const ListContainer = () => {
-    const toDos = useRecoilValue(toDoSelector);
+    const toDos = useRecoilValue(toDoState);
     
     return(
         <section>
