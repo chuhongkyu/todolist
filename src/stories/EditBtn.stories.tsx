@@ -12,6 +12,5 @@ type Story = StoryObj<typeof EditBtn>;
 
 export const ToDo: Story = {
   args: {
-
   },
 }

@@ -26,8 +26,8 @@ input[type="checkbox"].check-box{
     appearance: none;
     border: 1.5px solid gainsboro;
     border-radius: 0.35rem;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 input[type="checkbox"].check-box:checked {
